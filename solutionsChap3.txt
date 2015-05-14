@@ -117,6 +117,28 @@ function nth (list, search) {
 
 //Deep Comparison
 
+function deepEqual(a , b) {
+  if ((typeof(a) === "object" && a != null) && (typeof(b) === "object" && b != null)) {
+    var countA = 0;
+    var countB = 0;
+    for (var prop in a) {
+      countA += 1;
+    }
+    for (var prop in b){
+      countB +=1;
+      if (!(prop in a) || !deepEqual(a[prop],b[prop])){
+        return false;
+      }
+    }
+    return countA === countB;
+  } else {
+    if ( a === b) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
 
 
 
