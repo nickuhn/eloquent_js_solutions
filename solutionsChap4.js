@@ -1,38 +1,38 @@
 //Sum of a Range
 
 //create array with numbers from start to end
-function range (start , end) {
+function range(start, end) {
   var arr = [];
   for (var i = start; i <= end; i++) {
     arr.push(i);
-  };
+  }
   return arr;
-};
+}
 
 //adds up elements of array
-function sum (argArray) {
+function sum(argArray) {
   var total = 0;
   for (var i = 0; i < argArray.length; i++) {
     total += argArray[i];
   }
   return total;
-};
+}
 
 //Array creator with step option
-function range (start , end, step) {
+function range(start, end, step) {
   var arr = [];
   if (step === undefined) {
     step = 1;
   }
   for (var i = start; i <= end; i+=step) {
     arr.push(i);
-  };
+  }
   return arr;
-};
+}
 
 //Array Creator with step and negatives
 
-function range (start , end, step) {
+function range(start, end, step) {
   var arr = [];
   if (step === undefined) {
     step = 1;
@@ -41,32 +41,32 @@ function range (start , end, step) {
         arr.push(i);
       }
   } else {
-    for (var i = start; i >= end; i+=step){
-      arr.push(i);
+    for (var j = start; j >= end; j+=step){
+      arr.push(j);
     }
-  };
+  }
   return arr;
-};
+}
 
 
 //Reversing and Array
 
 //create a reverse array using push iteration
 
-function reverseArray (arrToReverse) {
+function reverseArray(arrToReverse) {
   var reversedArray = [];
   for (var i = arrToReverse.length - 1; i >= 0; i--) {
     reversedArray.push(arrToReverse[i]);
   }
   return reversedArray;
-};
+}
 
 //revers an array in place
 
-function reverseArrayInPlace (arrToReverse) {
+function reverseArrayInPlace(arrToReverse) {
   var placeHolder = 0;
-  length = Math.floor(arrToReverse.length / 2);
-  for (var i = 0; i < length; i++) {
+  var lengthToReverse = Math.floor(arrToReverse.length / 2);
+  for (var i = 0; i < lengthToReverse; i++) {
     placeHolder = arrToReverse[i];
     arrToReverse[i] = arrToReverse[(arrToReverse.length-1-i)];
     arrToReverse[(arrToReverse.length-1-i)] = placeHolder;
@@ -78,9 +78,9 @@ function reverseArrayInPlace (arrToReverse) {
 
 //Array to List
 
-function arrayToList (arr) {
+function arrayToList(arr) {
   var list = null;
-  for (i = arr.length - 1; i >= 0; i--){
+  for (var i = arr.length - 1; i >= 0; i--) {
     list = { value: arr[i], rest: list};
   }
   return list;
@@ -88,25 +88,26 @@ function arrayToList (arr) {
 
 //List to Array
 
-function listToArray (list) {
-  listArray=[];
-  for (var i = list; i; i=i.rest){
-    listArray.push(i.value);
+function listToArray(list) {
+  var listArray=[];
+  while (list) {
+    listArray.push(list.value);
+    list = list.rest;
   }
   return listArray;
 }
 
 //Prepend item to list
 
-function prepend (add, list) {
+function prepend(add, list) {
   var  list2 = { value: add, rest: list};
   return list2;
 }
 
 //Find nth value in list
 
-function nth (list, search) {
-  if( search < 0){
+function nth(list, search) {
+  if(search < 0) {
     return undefined;
   } else if (search === 0) {
     return list.value;
@@ -118,13 +119,13 @@ function nth (list, search) {
 //Deep Comparison
 
 function deepEqual(a , b) {
-  if ((typeof(a) === "object" && a != null) && (typeof(b) === "object" && b != null)) {
+  if ((typeof(a) === "object" && a !== null) && (typeof(b) === "object" && b !== null)) {
     var countA = 0;
     var countB = 0;
     for (var prop in a) {
       countA += 1;
     }
-    for (var prop in b){
+    for (prop in b) {
       countB +=1;
       if (!(prop in a) || !deepEqual(a[prop],b[prop])){
         return false;
@@ -132,7 +133,7 @@ function deepEqual(a , b) {
     }
     return countA === countB;
   } else {
-    if ( a === b) {
+    if (a === b) {
       return true;
     } else {
       return false;
